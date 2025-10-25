@@ -21,12 +21,25 @@ body {
   font-family: Lato, sans-serif;
 }
 
-a{
+a{  
   color: #006b3a;
 }
-main a{
-  outline: none;
+/* This native element is lacking focus, added focus */
+main a {
+  outline: none; 
+  text-decoration: none;
+  color: #006b3a;
 }
+
+main a:focus,
+main a:focus-visible {
+  outline: 3px solid #0078d7;    
+  outline-offset: 3px;             
+  border-radius: 3px;               
+  background-color: rgba(0, 120, 215, 0.1); 
+}
+
+
 h2 {
   margin-top: 0;
 }
@@ -206,7 +219,7 @@ article p {
       <nav class="menu">
         <a href="#">Home</a>
         <a href="#">Politics</a>
-        <a href="#" tabindex="-1">Business</a>
+        <a href="#">Business</a> <!-- remove tabindex="-1" to make Business have the focus-->
         <a href="#">Entertainment</a>
         <a href="#">Sports</a>
         <a href="#" class="btn-search pull-right"><img src="https://raw.githubusercontent.com/udacity/ud891/2de2a0688c68809a3b453db3a24b1a59e8401459/lesson2-focus/02-dom-order/images/search.svg" alt="Search" />Search</a> 
@@ -214,14 +227,9 @@ article p {
       </nav>
     </div>
   </header>
-  <div class="newsletter">
-    <div class="container">
-      <h3>Like the Funion? Consider joining our newsletter!</h3>
-      <input type="text">
-      <button type="button" onfocus="getFocus()">Sign up</button></div>
-      
-    </div>
+
   </div>
+
   <main class="container">
     <h2 class="offscreen">Top story</h2>
     <article class="main-story">
@@ -243,7 +251,7 @@ article p {
         </div>
         <article>
           <h3 class="headline">Bee wonders if maybe everyone else is a drone and he's the only one who has it "figured out."</h3>
-          <p><a href="#" tabindex="1"><b>Read More</b></a></p>
+          <p><a href="#"><b>Read More</b></a></p> <!-- removed the tabindex="1"-->
           <img src="https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/02-dom-order/images/bee.jpg?raw=true" alt="A bee on top of a flower" />
         </article>
       </div>
@@ -262,7 +270,7 @@ article p {
     </div>
     <div class="three-col">
       <div class="tier-header">
-        <h2>Recommended</h2>
+        <h2 tabindex="0">Recommended</h2> <!-- added the focus -->
       </div>
       <div class="columns">
         <article>
@@ -286,10 +294,18 @@ article p {
     </div>
     
   </main>
-  <!--   stuff can be added here :)
+  <!--   stuff can be added here :)   -->
+    <!-- remove the div block before the main and place it in the footer -->
   <footer>
+    <div class="newsletter">
+    <div class="container">
+      <h3>Like the Funion? Consider joining our newsletter!</h3>
+      <input type="text" title="email">
+      <button type="button" onclick="getFocus()">Sign up</button></div> <!-- change onfocus to onclick-->
+      
+    </div>
   </footer>
-  -->
+
   
   <script>
     function getFocus() {
